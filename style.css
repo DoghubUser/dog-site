@@ -76,7 +76,6 @@ html, body {
 }
 
 /* Loader */
-
 .loader {
   text-align: center;
   animation: fadeInScale 0.5s ease forwards;
@@ -110,14 +109,12 @@ html, body {
 }
 
 /* Tela principal */
-
 main {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   padding: 1rem;
-  box-sizing: border-box;
 }
 
 .main-content {
@@ -130,7 +127,6 @@ main {
   text-align: center;
   user-select: text;
   margin: 0 1rem;
-  box-sizing: border-box;
 }
 
 .hub-title {
@@ -150,12 +146,12 @@ main {
 }
 
 /* Botões com ícones */
-
 .btn-group {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
   margin-bottom: 2rem;
+  flex-wrap: nowrap; /* Sempre lado a lado */
 }
 
 .btn {
@@ -186,8 +182,7 @@ main {
   outline: none;
 }
 
-/* Cores no hover para cada botão */
-
+/* Hover colors */
 .discord-btn:hover svg path {
   fill: #4752C4;
 }
@@ -205,7 +200,6 @@ main {
 }
 
 /* Caixa do script */
-
 .script-box {
   background: #222;
   padding: 1rem 1.5rem;
@@ -218,13 +212,11 @@ main {
   user-select: none;
   max-width: 200px;
   margin: 0 auto;
-  cursor: default;
   text-align: center;
 }
 
-/* Media queries para responsividade */
-
-@media (max-width: 600px) {
+/* Mobile (apenas se tela for muito pequena) */
+@media (max-width: 500px) {
   .main-content {
     max-width: 95vw;
     padding: 1.5rem 2rem;
@@ -254,6 +246,7 @@ main {
   .btn-group {
     gap: 1rem;
     margin-bottom: 1.75rem;
+    flex-wrap: wrap; /* Só quebra no mobile */
   }
 
   .script-box {
@@ -264,7 +257,6 @@ main {
 }
 
 /* Animações */
-
 @keyframes fadeInScale {
   from {
     opacity: 0;
@@ -282,8 +274,7 @@ main {
   }
 }
 
-/* Remove outline azul nos botões e links */
-
+/* Remove outline azul */
 button:focus,
 a:focus {
   outline: none;
