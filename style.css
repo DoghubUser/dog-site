@@ -124,11 +124,13 @@ main {
   background: #222;
   border-radius: 16px;
   padding: 2rem 2.5rem;
+  width: 90vw;
   max-width: 360px;
-  width: 100%;
   box-shadow: 0 0 25px #ff6600bb;
   text-align: center;
   user-select: text;
+  margin: 0 1rem;
+  box-sizing: border-box;
 }
 
 .hub-title {
@@ -220,43 +222,45 @@ main {
   text-align: center;
 }
 
-/* Responsivo - mobile */
+/* Media queries para responsividade */
 
-body.mobile main .main-content {
-  max-width: 280px;
-  padding: 1.5rem 1.75rem;
-  box-shadow: 0 0 15px #ff6600bb;
-}
+@media (max-width: 600px) {
+  .main-content {
+    max-width: 95vw;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 15px #ff6600bb;
+  }
 
-body.mobile .hub-title {
-  font-size: 2rem;
-  letter-spacing: 1.5px;
-}
+  .hub-title {
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+  }
 
-body.mobile .hub-subtitle {
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-}
+  .hub-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
 
-body.mobile .btn {
-  width: 50px;
-  height: 50px;
-}
+  .btn {
+    width: 50px;
+    height: 50px;
+  }
 
-body.mobile .btn svg {
-  width: 22px;
-  height: 22px;
-}
+  .btn svg {
+    width: 22px;
+    height: 22px;
+  }
 
-body.mobile .btn-group {
-  gap: 1rem;
-  margin-bottom: 1.75rem;
-}
+  .btn-group {
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
 
-body.mobile .script-box {
-  font-size: 1rem;
-  padding: 0.75rem 1.25rem;
-  max-width: 180px;
+  .script-box {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+    max-width: 180px;
+  }
 }
 
 /* Animações */
