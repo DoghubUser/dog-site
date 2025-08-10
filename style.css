@@ -1,128 +1,140 @@
-body {
-  margin: 0;
-  font-family: 'Quicksand', sans-serif;
-  background: #111;
-  color: white;
-  user-select: none;
-  overflow: hidden;
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* Telas */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #111;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+/* Telas gerais */
 .screen {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
-  z-index: 100;
+  z-index: 1000;
 }
+
 .screen.active {
   opacity: 1;
   pointer-events: all;
 }
 
-/* Modal seleção de idioma */
 .modal {
-  background: #222;
-  padding: 25px 30px;
+  background-color: #222;
+  padding: 2rem 2.5rem;
   border-radius: 12px;
+  box-shadow: 0 0 20px #ff6600bb;
   text-align: center;
-  animation: fadeIn 0.5s ease;
-  box-shadow: 0 0 15px #ff6600aa;
+  animation: fadeInScale 0.5s ease forwards;
 }
+
 .modal h2 {
-  margin-bottom: 25px;
   font-weight: 700;
-  font-size: 1.7rem;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
   color: #ff8533;
 }
+
 .modal button {
-  margin: 0 12px;
-  padding: 14px 28px;
-  background: #333;
+  background-color: #333;
   border: none;
-  color: white;
   border-radius: 8px;
-  cursor: pointer;
+  color: #fff;
   font-weight: 600;
   font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+  margin: 0 0.75rem;
+  cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   user-select: none;
 }
-.modal button:hover {
-  background: #ff6600;
+
+.modal button:hover,
+.modal button:focus {
+  background-color: #ff6600;
+  outline: none;
   transform: scale(1.05);
 }
 
-/* Loader - barra e texto animado */
+/* Loader */
+
 .loader {
   text-align: center;
-  animation: fadeIn 0.5s ease;
+  animation: fadeInScale 0.5s ease forwards;
 }
 
 .progress-bar-container {
-  width: 240px;
-  height: 12px;
+  width: 260px;
+  max-width: 90vw;
+  height: 14px;
   background: #333;
-  border-radius: 10px;
-  margin: 0 auto 20px auto;
-  box-shadow: inset 0 0 8px #ff6600aa;
+  border-radius: 12px;
+  margin: 0 auto 1.25rem;
+  box-shadow: inset 0 0 10px #ff6600aa;
   overflow: hidden;
 }
 
 .progress-bar {
-  width: 0%;
+  width: 0;
   height: 100%;
   background: linear-gradient(90deg, #ff8533, #ff6600);
-  border-radius: 10px;
-  animation: progressAnim 8s linear forwards;
+  border-radius: 12px;
+  animation: progressFill 10s linear forwards;
 }
 
 #loading-text {
-  font-size: 1.3rem;
   font-weight: 600;
+  font-size: 1.3rem;
   color: #ff8533;
-  user-select: none;
   letter-spacing: 0.04em;
+  user-select: none;
 }
 
-/* Animações gerais */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* Tela principal */
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-@keyframes progressAnim {
-  to {
-    width: 100%;
-  }
-}
-
-/* Tela principal - minimalista */
 .main-content {
-  text-align: center;
-  max-width: 360px;
-  padding: 30px 25px;
   background: #222;
   border-radius: 16px;
-  box-shadow: 0 0 20px #ff6600bb;
+  padding: 2rem 2.5rem;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 0 25px #ff6600bb;
+  text-align: center;
   user-select: text;
 }
 
 .hub-title {
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   font-weight: 900;
-  margin-bottom: 6px;
+  margin-bottom: 0.5rem;
   color: #ff8533;
   letter-spacing: 2px;
 }
@@ -131,30 +143,32 @@ body {
   font-size: 1rem;
   font-weight: 500;
   color: #ffb266;
-  margin-bottom: 20px;
-  letter-spacing: 0.04em;
-  user-select: text;
+  margin-bottom: 1.75rem;
+  letter-spacing: 0.05em;
 }
 
-/* Botões com ícones menores */
+/* Botões com ícones */
+
 .btn-group {
   display: flex;
   justify-content: center;
-  gap: 22px;
-  margin-bottom: 30px;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .btn {
   width: 60px;
   height: 60px;
-  background: #222;
   border-radius: 50%;
-  box-shadow: 0 0 15px #ff6600cc;
+  background-color: #222;
+  box-shadow: 0 0 20px #ff6600cc;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  user-select: none;
+  text-decoration: none;
 }
 
 .btn svg {
@@ -163,12 +177,15 @@ body {
   filter: drop-shadow(0 0 1px rgba(0,0,0,0.7));
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
+  box-shadow: 0 0 35px #ff8533cc;
   transform: scale(1.15);
-  box-shadow: 0 0 30px #ff8533cc;
+  outline: none;
 }
 
-/* Cores ao passar o mouse */
+/* Cores no hover para cada botão */
+
 .discord-btn:hover svg path {
   fill: #4752C4;
 }
@@ -185,27 +202,29 @@ body {
   fill: #bbb;
 }
 
-/* Caixa do script "Script Em Breve" - menor e simples */
+/* Caixa do script */
+
 .script-box {
   background: #222;
-  padding: 15px 25px;
+  padding: 1rem 1.5rem;
   border-radius: 16px;
-  box-shadow: inset 0 0 12px #ff8533aa;
+  box-shadow: inset 0 0 15px #ff8533aa;
   font-weight: 700;
   font-size: 1.2rem;
   color: #ff8533;
   letter-spacing: 0.08em;
   user-select: none;
-  max-width: 180px;
+  max-width: 200px;
   margin: 0 auto;
   cursor: default;
   text-align: center;
 }
 
-/* Ajustes responsivos para mobile */
-body.mobile .main-content {
+/* Responsivo - mobile */
+
+body.mobile main .main-content {
   max-width: 280px;
-  padding: 20px 18px;
+  padding: 1.5rem 1.75rem;
   box-shadow: 0 0 15px #ff6600bb;
 }
 
@@ -216,7 +235,7 @@ body.mobile .hub-title {
 
 body.mobile .hub-subtitle {
   font-size: 0.9rem;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }
 
 body.mobile .btn {
@@ -230,24 +249,43 @@ body.mobile .btn svg {
 }
 
 body.mobile .btn-group {
-  gap: 16px;
-  margin-bottom: 25px;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
 }
 
 body.mobile .script-box {
   font-size: 1rem;
-  padding: 12px 20px;
-  max-width: 160px;
+  padding: 0.75rem 1.25rem;
+  max-width: 180px;
 }
 
-/* Remove contorno azul feio ao focar em botões e links */
+/* Animações */
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes progressFill {
+  to {
+    width: 100%;
+  }
+}
+
+/* Remove outline azul nos botões e links */
+
 button:focus,
 a:focus {
   outline: none;
   box-shadow: none;
 }
 
-/* Opcional: remover também o contorno ao clicar */
 button:active,
 a:active {
   outline: none;

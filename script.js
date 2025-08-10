@@ -17,8 +17,7 @@ const texts = {
 
 function detectDevice() {
   const ua = navigator.userAgent || navigator.vendor || window.opera;
-  // Detecta mobile pelo userAgent (simplificado)
-  if (/android|iphone|ipad|mobile/i.test(ua)) {
+  if (/android|iphone|ipad|ipod|mobile/i.test(ua)) {
     document.body.classList.add('mobile');
   } else {
     document.body.classList.add('desktop');
@@ -32,10 +31,10 @@ function selectLanguage(lang) {
   const loadingText = document.getElementById('loading-text');
   const dots = document.getElementById('dots');
   
-  // Ajustar textos da tela de carregamento e principal
   loadingText.textContent = texts[lang].loadingText;
   loadingText.appendChild(dots);
   
+  document.getElementById('select-language-title').textContent = texts[lang].selectLanguageTitle;
   document.getElementById('hub-title').textContent = texts[lang].hubTitle;
   document.getElementById('hub-subtitle').textContent = texts[lang].hubSubtitle;
   document.getElementById('script-text').textContent = texts[lang].scriptText;
@@ -46,7 +45,6 @@ function selectLanguage(lang) {
     langScreen.style.display = 'none';
     loadingScreen.classList.add('active');
     
-    // Animação dos pontinhos com intervalo de 1s
     let dotCount = 0;
     const dotInterval = setInterval(() => {
       dotCount = (dotCount + 1) % 4;
@@ -56,18 +54,17 @@ function selectLanguage(lang) {
     setTimeout(() => {
       clearInterval(dotInterval);
       loadingScreen.classList.remove('active');
+      loadingScreen.style.display = 'none';
       
-      setTimeout(() => {
-        loadingScreen.style.display = 'none';
-        mainScreen.classList.add('active');
-        
-        document.body.style.overflow = 'auto';
-        document.body.style.userSelect = 'auto';
-      }, 500);
-    }, 8500);
+      mainScreen.hidden = false;
+      mainScreen.classList.add('active');
+      
+      document.body.style.overflow = 'auto';
+      document.body.style.userSelect = 'auto';
+    }, 9000);
   }, 500);
 }
 
-window.onload = () => {
+window.addEventListener('load', () => {
   detectDevice();
-};
+});
