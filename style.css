@@ -83,7 +83,6 @@ html, body {
 
 .progress-bar-container {
   width: 260px;
-  max-width: 90vw;
   height: 14px;
   background: #333;
   border-radius: 12px;
@@ -121,14 +120,14 @@ main {
   background: #222;
   border-radius: 16px;
   padding: 2rem 2.5rem;
-  width: 90vw;
-  max-width: 360px;
+  width: 360px; /* largura fixa estilo desktop */
+  min-width: 320px;
   box-shadow: 0 0 25px #ff6600bb;
   text-align: center;
   user-select: text;
-  margin: 0 1rem;
 }
 
+/* Títulos */
 .hub-title {
   font-size: 2.6rem;
   font-weight: 900;
@@ -151,7 +150,7 @@ main {
   justify-content: center;
   gap: 1.5rem;
   margin-bottom: 2rem;
-  flex-wrap: nowrap; /* Sempre lado a lado */
+  flex-wrap: nowrap;
 }
 
 .btn {
@@ -165,7 +164,6 @@ main {
   justify-content: center;
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  user-select: none;
   text-decoration: none;
 }
 
@@ -215,47 +213,6 @@ main {
   text-align: center;
 }
 
-/* Mobile (apenas se tela for muito pequena) */
-@media (max-width: 500px) {
-  .main-content {
-    max-width: 95vw;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 0 15px #ff6600bb;
-  }
-
-  .hub-title {
-    font-size: 2rem;
-    letter-spacing: 1.5px;
-  }
-
-  .hub-subtitle {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .btn {
-    width: 50px;
-    height: 50px;
-  }
-
-  .btn svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .btn-group {
-    gap: 1rem;
-    margin-bottom: 1.75rem;
-    flex-wrap: wrap; /* Só quebra no mobile */
-  }
-
-  .script-box {
-    font-size: 1rem;
-    padding: 0.75rem 1.25rem;
-    max-width: 180px;
-  }
-}
-
 /* Animações */
 @keyframes fadeInScale {
   from {
@@ -277,12 +234,6 @@ main {
 /* Remove outline azul */
 button:focus,
 a:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-button:active,
-a:active {
   outline: none;
   box-shadow: none;
 }
