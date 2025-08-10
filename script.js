@@ -15,6 +15,16 @@ const texts = {
   }
 };
 
+function detectDevice() {
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  // Detecta mobile pelo userAgent (simplificado)
+  if (/android|iphone|ipad|mobile/i.test(ua)) {
+    document.body.classList.add('mobile');
+  } else {
+    document.body.classList.add('desktop');
+  }
+}
+
 function selectLanguage(lang) {
   const langScreen = document.getElementById('language-screen');
   const loadingScreen = document.getElementById('loading-screen');
@@ -22,12 +32,10 @@ function selectLanguage(lang) {
   const loadingText = document.getElementById('loading-text');
   const dots = document.getElementById('dots');
   
-  // Ajustar textos da tela de seleção de idioma antes de sumir (não mais necessário porque vai sumir)
-  // Ajustar texto da tela de carregamento
+  // Ajustar textos da tela de carregamento e principal
   loadingText.textContent = texts[lang].loadingText;
   loadingText.appendChild(dots);
   
-  // Ajustar textos da tela principal para quando for exibida
   document.getElementById('hub-title').textContent = texts[lang].hubTitle;
   document.getElementById('hub-subtitle').textContent = texts[lang].hubSubtitle;
   document.getElementById('script-text').textContent = texts[lang].scriptText;
@@ -59,3 +67,7 @@ function selectLanguage(lang) {
     }, 8500);
   }, 500);
 }
+
+window.onload = () => {
+  detectDevice();
+};

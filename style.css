@@ -90,8 +90,6 @@ body {
   letter-spacing: 0.04em;
 }
 
-/* Animação dos 3 pontinhos será feita em JS */
-
 /* Animações gerais */
 @keyframes fadeIn {
   from {
@@ -202,4 +200,56 @@ body {
   margin: 0 auto;
   cursor: default;
   text-align: center;
+}
+
+/* Ajustes responsivos para mobile */
+body.mobile .main-content {
+  max-width: 280px;
+  padding: 20px 18px;
+  box-shadow: 0 0 15px #ff6600bb;
+}
+
+body.mobile .hub-title {
+  font-size: 2rem;
+  letter-spacing: 1.5px;
+}
+
+body.mobile .hub-subtitle {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+body.mobile .btn {
+  width: 50px;
+  height: 50px;
+}
+
+body.mobile .btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+body.mobile .btn-group {
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+body.mobile .script-box {
+  font-size: 1rem;
+  padding: 12px 20px;
+  max-width: 160px;
+}
+
+/* Remove contorno azul feio ao focar em botões e links */
+button:focus,
+a:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Opcional: remover também o contorno ao clicar */
+button:active,
+a:active {
+  outline: none;
+  box-shadow: none;
 }
